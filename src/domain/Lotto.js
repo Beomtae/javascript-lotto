@@ -7,7 +7,7 @@ class Lotto {
   }
 
   #ascendingSort(lottoNumbers) {
-    return lottoNumbers.sort((a, b) => a - b);
+    return [...lottoNumbers].sort((a, b) => a - b);
   }
 
   compareWinningNumbers(answerLotto) {
