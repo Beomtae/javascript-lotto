@@ -3,11 +3,7 @@ class LottoPack {
   #lottos;
   #checkCountResult = { 6: 0, "5+1": 0, 5: 0, 4: 0, 3: 0 };
   constructor(lottos) {
-    this.#lottos = this.#generateLottos(lottos);
-  }
-
-  #generateLottos(lottos) {
-    return lottos.map((lottoNumbers) => {
+    this.#lottos = lottos.map((lottoNumbers) => {
       return new Lotto(lottoNumbers);
     });
   }
