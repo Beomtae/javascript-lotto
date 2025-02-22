@@ -1,3 +1,4 @@
+import { BONUS_CONDITION_COUNT, BONUS_MATCH, BONUS_PRIZE_KEY, MIN_WINNING_COUNT } from "../constants/constant.js";
 import Lotto from "./Lotto.js";
 class LottoPack {
   #lottos;
@@ -17,9 +18,9 @@ class LottoPack {
   }
 
   #saveCheckCount(winningCount, bonusCount) {
-    if (winningCount === 5 && bonusCount === 1) {
-      this.#checkCountResult["5+1"]++;
-    } else if (winningCount >= 3) {
+    if (winningCount === BONUS_CONDITION_COUNT && bonusCount === BONUS_MATCH) {
+      this.#checkCountResult[BONUS_PRIZE_KEY]++;
+    } else if (winningCount >= MIN_WINNING_COUNT) {
       this.#checkCountResult[winningCount]++;
     }
   }
