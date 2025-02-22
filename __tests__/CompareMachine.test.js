@@ -5,8 +5,8 @@ test("사용자가 구매한 로또 번호와 같은 당첨 번호 갯수를 센
   const lottoPack = new LottoPack([[1, 2, 3, 4, 5, 6]]);
   const answerLotto = [1, 2, 3, 4, 5, 6];
   const answerTable = generateAnswerLotto(answerLotto, 7);
-  lottoPack.playCompare(answerTable);
-  expect(lottoPack.checkCountResult).toEqual({
+  const result = lottoPack.playCompare(answerTable);
+  expect(result).toEqual({
     6: 1,
     "5+1": 0,
     5: 0,

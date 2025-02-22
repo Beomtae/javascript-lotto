@@ -2,7 +2,6 @@ import { BONUS_CONDITION_COUNT, BONUS_MATCH, BONUS_PRIZE_KEY, MIN_WINNING_COUNT 
 import Lotto from "./Lotto.js";
 class LottoPack {
   #lottos;
-  #checkCountResult = { 6: 0, "5+1": 0, 5: 0, 4: 0, 3: 0 };
   constructor(lottos) {
     this.#lottos = lottos.map((lottoNumbers) => {
       return new Lotto(lottoNumbers);
@@ -10,19 +9,17 @@ class LottoPack {
   }
 
   playCompare(answerLotto) {
+    const result = { 6: 0, "5+1": 0, 5: 0, 4: 0, 3: 0 };
+
     this.#lottos.forEach((lotto) => {
       const { winningCount, bonusCount } = lotto.compareWinningNumbers(answerLotto);
-      this.#saveCheckCount(winningCount, bonusCount);
-    });
-    return this.#checkCountResult;
-  }
+      if (winningCount < MIN_WINNING_COUNT) return;
 
-  #saveCheckCount(winningCount, bonusCount) {
-    if (winningCount === BONUS_CONDITION_COUNT && bonusCount === BONUS_MATCH) {
-      this.#checkCountResult[BONUS_PRIZE_KEY]++;
-    } else if (winningCount >= MIN_WINNING_COUNT) {
-      this.#checkCountResult[winningCount]++;
-    }
+      const key = winningCount === BONUS_CONDITION_COUNT && bonusCount === BONUS_MATCH ? BONUS_PRIZE_KEY : winningCount;
+
+      result[key] += 1;
+    });
+    return result;
   }
 
   get lottos() {
