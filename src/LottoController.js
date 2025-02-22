@@ -16,6 +16,11 @@ class LottoController {
     OutputView.purchaseCount(count);
     OutputView.lottoPack(lottoPack.lottos);
 
+    await this.#playLotto(purchaseAmount, lottoPack);
+    await this.#restart();
+  }
+
+  async #playLotto(purchaseAmount, lottoPack) {
     const { winningNumbers, bonusNumber } = await this.#answerLottoInput();
     const answerLotto = generateAnswerLotto(winningNumbers, bonusNumber);
 
@@ -26,8 +31,6 @@ class LottoController {
 
     const profitRate = profitCalculator(purchaseAmount, winningResult);
     OutputView.profitRate(profitRate);
-
-    await this.#restart();
   }
 
   async #purchaseAmountInput() {
@@ -46,8 +49,11 @@ class LottoController {
   }
 
   async #restart() {
-    const restart = await retryCheckInput(async () => await InputView.restart(), validateRestart);
-    if (restart) this.start();
+    if (await this.#isRestart()) this.start();
+  }
+
+  async #isRestart() {
+    await retryCheckInput(async () => await InputView.restart(), validateRestart);
   }
 }
 export default LottoController;
