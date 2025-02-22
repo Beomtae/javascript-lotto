@@ -53,7 +53,7 @@ class LottoController {
   }
 
   async #isRestart() {
-    await retryCheckInput(async () => await InputView.restart(), validateRestart);
+    return retryCheckInput(async () => await InputView.restart(), validateRestart);
   }
 }
 export default LottoController;
