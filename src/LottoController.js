@@ -24,9 +24,8 @@ class LottoController {
     const { winningNumbers, bonusNumber } = await this.#answerLottoInput();
     const answerLotto = generateAnswerLotto(winningNumbers, bonusNumber);
 
-    lottoPack.playCompare(answerLotto);
+    const winningResult = lottoPack.playCompare(answerLotto);
 
-    const winningResult = lottoPack.checkCountResult;
     OutputView.winningStatistics(winningResult);
 
     const profitRate = profitCalculator(purchaseAmount, winningResult);

@@ -17,6 +17,7 @@ class LottoPack {
       const { winningCount, bonusCount } = lotto.compareWinningNumbers(answerLotto);
       this.#saveCheckCount(winningCount, bonusCount);
     });
+    return this.#checkCountResult;
   }
 
   #saveCheckCount(winningCount, bonusCount) {
@@ -29,10 +30,6 @@ class LottoPack {
 
   get lottos() {
     return this.#lottos;
-  }
-
-  get checkCountResult() {
-    return this.#checkCountResult;
   }
 }
 
