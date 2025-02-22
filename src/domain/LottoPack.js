@@ -23,7 +23,7 @@ class LottoPack {
   }
 
   get lottos() {
-    return this.#lottos;
+    return this.#lottos.map((lotto) => new Lotto([...lotto.lottoNumbers]));
   }
 }
 
