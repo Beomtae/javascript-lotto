@@ -9,7 +9,6 @@ import validateWinningNumbers from "./domain/validation/validateWinningNumbers.j
 import validateBonusNumber from "./domain/validation/validateBonusNumber.js";
 import validateRestart from "./domain/validation/validateRestart.js";
 class Controller {
-
   async start() {
     const purchaseAmount = await this.#purchaseAmountInput();
     const { count, lottoPack } = LottoMachine(purchaseAmount);
@@ -28,7 +27,7 @@ class Controller {
     const profitRate = profitCalculator(purchaseAmount, winningResult);
     OutputView.profitRate(profitRate);
 
-    await this.#reStart();
+    await this.#restart();
   }
 
   async #purchaseAmountInput() {
@@ -46,7 +45,7 @@ class Controller {
     return { winningNumbers, bonusNumber };
   }
 
-  async #reStart() {
+  async #restart() {
     const restart = await retryCheckInput(async () => await InputView.restart(), validateRestart);
     if (restart) this.start();
   }
