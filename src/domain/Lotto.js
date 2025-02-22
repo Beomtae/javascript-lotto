@@ -16,8 +16,7 @@ class Lotto {
     this.#lottoNumbers.forEach((number) => {
       if (answerLotto[number] === WINNING) {
         winningCount += 1;
-      }
-      if (answerLotto[number] === BONUS) {
+      } else if (answerLotto[number] === BONUS) {
         bonusCount += 1;
       }
     });
