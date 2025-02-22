@@ -11,15 +11,8 @@ class Lotto {
   }
 
   compareWinningNumbers(answerLotto) {
-    let winningCount = 0;
-    let bonusCount = 0;
-    this.#lottoNumbers.forEach((number) => {
-      if (answerLotto[number] === WINNING) {
-        winningCount += 1;
-      } else if (answerLotto[number] === BONUS) {
-        bonusCount += 1;
-      }
-    });
+    const winningCount = this.#lottoNumbers.filter((number) => answerLotto[number] === WINNING).length;
+    const bonusCount = this.#lottoNumbers.filter((number) => answerLotto[number] === BONUS).length;
     return { winningCount, bonusCount };
   }
 
