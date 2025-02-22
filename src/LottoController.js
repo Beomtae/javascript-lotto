@@ -8,7 +8,7 @@ import validatePurchaseAmount from "./domain/validation/validatePurchaseAmount.j
 import validateWinningNumbers from "./domain/validation/validateWinningNumbers.js";
 import validateBonusNumber from "./domain/validation/validateBonusNumber.js";
 import validateRestart from "./domain/validation/validateRestart.js";
-class Controller {
+class LottoController {
   async start() {
     const purchaseAmount = await this.#purchaseAmountInput();
     const { count, lottoPack } = LottoMachine(purchaseAmount);
@@ -50,4 +50,4 @@ class Controller {
     if (restart) this.start();
   }
 }
-export default Controller;
+export default LottoController;
