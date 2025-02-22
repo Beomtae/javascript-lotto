@@ -34,16 +34,13 @@ class LottoController {
   }
 
   async #purchaseAmountInput() {
-    const purchaseAmount = await retryCheckInput(async () => await InputView.purchaseAmount(), validatePurchaseAmount);
+    const purchaseAmount = await retryCheckInput(InputView.purchaseAmount, validatePurchaseAmount);
     return purchaseAmount;
   }
 
   async #answerLottoInput() {
-    const winningNumbers = await retryCheckInput(async () => await InputView.winningNumbers(), validateWinningNumbers);
-    const bonusNumber = await retryCheckInput(
-      async () => await InputView.bonusNumber(),
-      validateBonusNumber(winningNumbers),
-    );
+    const winningNumbers = await retryCheckInput(InputView.winningNumbers, validateWinningNumbers);
+    const bonusNumber = await retryCheckInput(InputView.bonusNumber, validateBonusNumber(winningNumbers));
 
     return { winningNumbers, bonusNumber };
   }
@@ -53,7 +50,7 @@ class LottoController {
   }
 
   async #isRestart() {
-    return retryCheckInput(async () => await InputView.restart(), validateRestart);
+    return retryCheckInput(InputView.restart, validateRestart);
   }
 }
 export default LottoController;
