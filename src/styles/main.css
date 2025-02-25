@@ -108,3 +108,17 @@ body {
   color: #ffffff;
   cursor: pointer;
 }
+
+.result_section {
+  width: 382px;
+  height: 300px;
+  margin-top: 28px;
+}
+
+.lotto {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  margin-top: 12px;
+}
