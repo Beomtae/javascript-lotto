@@ -1,0 +1,16 @@
+.header {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  background-color: #4e5ba6;
+}
+
+.header_text {
+  width: 147px;
+  height: 36px;
+  padding: 13px 0px 13px 130px;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+  color: #ffffff;
+}
