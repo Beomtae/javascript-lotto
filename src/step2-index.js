@@ -5,7 +5,12 @@
 
 const resultButton = document.querySelector(".result_check_button");
 const modal = document.querySelector(".modal_overlay");
+const closeButton = document.querySelector(".close_button");
 
 resultButton.addEventListener("click", () => {
   modal.style.display = "block"; // 모달창 보이기
+});
+
+closeButton.addEventListener("click", () => {
+  modal.style.display = "none";
 });
