@@ -31,4 +31,16 @@ const lottoStart = () => {
   console.log(count, lottoPack);
   const resultText = document.querySelector(".result_text");
   resultText.textContent = `총 ${count}개를 구매하였습니다.`;
+  // 랜덤 로또값 생성 화면
+  const lottoPackContainer = document.querySelector(".lotto_pack");
+  lottoPackContainer.innerHTML = "";
+  lottoPack.lottos.forEach((lotto) => {
+    const lottoElement = document.createElement("div");
+    lottoElement.classList.add("lotto");
+    lottoElement.innerHTML = `
+      <img src="./public/ticket.png" />
+      <p class="random_number">${lotto.lottoNumbers.join(", ")}</p>
+    `;
+    lottoPackContainer.appendChild(lottoElement);
+  });
 };
