@@ -1,3 +1,5 @@
+import LottoMachine from "./domain/LottoMachine.js";
+
 /**
  * step 2의 시작점이 되는 파일입니다.
  * 노드 환경에서 사용하는 readline 등을 불러올 경우 정상적으로 빌드할 수 없습니다.
@@ -18,6 +20,15 @@ closeButton.addEventListener("click", () => {
 });
 
 purchaseButton.addEventListener("click", () => {
+  lottoStart();
   resultSection.style.display = "block";
   winningSection.style.display = "block";
 });
+
+const lottoStart = () => {
+  const value = document.querySelector(".purchase_input").value;
+  const { count, lottoPack } = LottoMachine(value);
+  console.log(count, lottoPack);
+  const resultText = document.querySelector(".result_text");
+  resultText.textContent = `총 ${count}개를 구매하였습니다.`;
+};
