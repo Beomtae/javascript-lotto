@@ -12,6 +12,7 @@ const closeButton = document.querySelector(".close_button");
 const purchaseButton = document.querySelector(".purchase_button");
 const resultSection = document.querySelector(".result_section");
 const winningSection = document.querySelector(".winning_number_section");
+const restartButton = document.querySelector(".restart");
 
 purchaseButton.addEventListener("click", () => {
   const { purchaseAmount, lottoPack } = lottoStart();
@@ -21,6 +22,7 @@ purchaseButton.addEventListener("click", () => {
     checkStart(purchaseAmount, lottoPack);
     modal.style.display = "block"; // 모달창 보이기
 
+    restartButton.addEventListener("click", restart);
     closeButton.addEventListener("click", () => {
       modal.style.display = "none";
     });
@@ -58,7 +60,6 @@ const checkStart = (purchaseAmount, lottoPack) => {
   const bonusNumberInput = Number(document.querySelector(".bonus_number_input").value);
   const answerLotto = generateAnswerLotto(winningNumbers, bonusNumberInput);
   const winningResult = lottoPack.playCompare(answerLotto);
-  console.log(answerLotto, winningResult);
   const matchCountFifth = document.getElementById("match_3");
   const matchCountForth = document.getElementById("match_4");
   const matchCountThird = document.getElementById("match_5");
@@ -72,4 +73,16 @@ const checkStart = (purchaseAmount, lottoPack) => {
   const profitRate = profitCalculator(purchaseAmount, winningResult);
   const profitResult = document.querySelector(".profit");
   profitResult.textContent = `당신의 총 수익률은 ${profitRate}%입니다.`;
+};
+
+const restart = () => {
+  document.querySelector(".purchase_input").value = "";
+  const winningNumberInputs = document.querySelectorAll(".winning_number_input");
+  [...winningNumberInputs].map((winningNumber) => {
+    return (winningNumber.value = "");
+  });
+  document.querySelector(".bonus_number_input").value = "";
+  modal.style.display = "none";
+  resultSection.style.display = "none";
+  winningSection.style.display = "none";
 };
