@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-export const restart = () => {
+const restart = () => {
   document.querySelector(".purchase_input").value = "";
   const winningNumberInputs = document.querySelectorAll(".winning_number_input");
   [...winningNumberInputs].map((winningNumber) => {
