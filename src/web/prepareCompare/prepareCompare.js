@@ -1,4 +1,3 @@
-import { playLotto } from "../../step2-index.js";
 import LottoMachine from "../../domain/LottoMachine.js";
 import validatePurchaseAmount from "../../domain/validation/validatePurchaseAmount.js";
 
@@ -9,7 +8,7 @@ export const randomLottos = () => {
   const { purchaseAmount, lottoPack } = lottoStart();
   resultSection.style.display = "block";
   winningSection.style.display = "block";
-  playLotto(purchaseAmount, lottoPack);
+  return { purchaseAmount, lottoPack };
 };
 
 const lottoStart = () => {

@@ -1,5 +1,4 @@
 @import "./static.css";
 @import "./index.css";
-@import "../randomLottos/randomLottos.css";
-@import "../playLotto/playLotto.css";
+@import "../prepareCompare/prepareCompare.css";
 @import "../winningResult/winningResult.css";

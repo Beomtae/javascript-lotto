@@ -2,34 +2,37 @@ import generateAnswerLotto from "./domain/AnswerLottoPack.js";
 import profitCalculator from "./domain/profitCalculator.js";
 import validateWinningNumbers from "./domain/validation/validateWinningNumbers.js";
 import validateBonusNumber from "./domain/validation/validateBonusNumber.js";
-import { randomLottos } from "./web/randomLottos/randomLottos.js";
+import { randomLottos } from "./web/prepareCompare/prepareCompare.js";
+
 /**
  * step 2의 시작점이 되는 파일입니다.
  * 노드 환경에서 사용하는 readline 등을 불러올 경우 정상적으로 빌드할 수 없습니다.
  */
 const resultButton = document.querySelector(".result_check_button");
-const modal = document.querySelector(".modal_overlay");
+const restartButton = document.querySelector(".restart");
 const closeButton = document.querySelector(".close_button");
+const modal = document.querySelector(".modal_overlay");
 const purchaseButton = document.querySelector(".purchase_button");
 const resultSection = document.querySelector(".result_section");
 const winningSection = document.querySelector(".winning_number_section");
-const restartButton = document.querySelector(".restart");
 
 document.addEventListener("DOMContentLoaded", () => {
-  purchaseButton.addEventListener("click", randomLottos);
+  purchaseButton.addEventListener("click", () => {
+    const { purchaseAmount, lottoPack } = randomLottos();
+
+    if (purchaseAmount && lottoPack) {
+      resultButton.addEventListener("click", () => {
+        checkStart(purchaseAmount, lottoPack);
+      });
+      restartButton.addEventListener("click", restart);
+      closeButton.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    }
+  });
 });
 
-export const playLotto = (purchaseAmount, lottoPack) => {
-  resultButton.addEventListener("click", () => {
-    checkStart(purchaseAmount, lottoPack);
-  });
-  restartButton.addEventListener("click", restart);
-  closeButton.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-};
-
-const checkStart = (purchaseAmount, lottoPack) => {
+export const checkStart = (purchaseAmount, lottoPack) => {
   try {
     // 당첨 번호 도메인 연결
     const winningNumberInputs = document.querySelectorAll(".winning_number_input");
@@ -64,7 +67,7 @@ const checkStart = (purchaseAmount, lottoPack) => {
   }
 };
 
-const restart = () => {
+export const restart = () => {
   document.querySelector(".purchase_input").value = "";
   const winningNumberInputs = document.querySelectorAll(".winning_number_input");
   [...winningNumberInputs].map((winningNumber) => {
