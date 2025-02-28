@@ -1,4 +1,4 @@
-import { randomLottos } from "./web/prepareCompare/prepareCompare.js";
+import { prepareCompare } from "./web/prepareCompare/prepareCompare.js";
 import { winningResult } from "./web/winningResult/winningResult.js";
 /**
  * step 2의 시작점이 되는 파일입니다.
@@ -14,7 +14,7 @@ const winningSection = document.querySelector(".winning_number_section");
 
 document.addEventListener("DOMContentLoaded", () => {
   purchaseButton.addEventListener("click", () => {
-    const { purchaseAmount, lottoPack } = randomLottos();
+    const { purchaseAmount, lottoPack } = prepareCompare();
 
     if (purchaseAmount && lottoPack) {
       resultButton.addEventListener("click", () => {
