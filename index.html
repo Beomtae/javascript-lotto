@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <header class="header">
+      <span class="header_text">🎱 행운의 로또</span>
+    </header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[2단계]웹 기반 로또 게임</title>
+    <script type="module" crossorigin src="/javascript-lotto/assets/index-Doe4DL9k.js"></script>
+    <link rel="stylesheet" crossorigin href="/javascript-lotto/assets/index-41srMYW3.css">
+  </head>
+
+  <body>
+    <main id="app">
+      <div class="main_contents">
+        <h2 class="title">🎱 내 번호 당첨 확인 🎱</h2>
+        <section class="purchase_section">
+          <p class="purchase_text">구입할 금액을 입력해주세요.</p>
+          <div class="purchase_input_container">
+            <input class="purchase_input" placeholder="금액" value="" />
+            <button class="purchase_button">구입</button>
+          </div>
+        </section>
+        <section class="result_section">
+          <p class="result_text"></p>
+          <div class="lotto_pack">
+          </div>
+        </section>
+        <section class="winning_number_section">
+          <p class="winning_input_text">지난 주 당첨번호 6개와 보너스 번호 1개를 입력해주세요.</p>
+          <div class="number_text">
+            <p>당첨 번호</p>
+            <p>보너스 번호</p>
+          </div>
+          <div class="winning_bonus_container">
+            <div class="winning_number_container">
+              <input class="winning_number_input" value="" />
+              <input class="winning_number_input" value=""/>
+              <input class="winning_number_input" value=""/>
+              <input class="winning_number_input" value=""/>
+              <input class="winning_number_input" value=""/>
+              <input class="winning_number_input" value=""/>
+            </div>
+            <div class="bonus_number_container">
+              <input class="bonus_number_input" />
+            </div>
+          </div>
+          <button class="result_check_button">결과 확인하기</button>
+        </section>
+      </div>
+    </main>
+    <div class="modal_overlay">
+      <div class="modal">
+        <div class="modal_header">
+          <img class="close_button" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABaSURBVHgBrZLtCQAgCESPJnH/JRqlUfoA/wRdV5YgRb0nIgKA9cx+qpjYcak9i5DNmerO9MBkyuxkWXgFSInJR9JKplLCpzAEWjUEhrMD6J+sypiMh5W7XvIGVf1CP7do04YAAAAASUVORK5CYII=" />
+        </div>
+        <div class="modal_content">
+          <h1 class="modal_title">🏆 당첨 통계 🏆</h1>
+          <div class="statistics">
+            <div class="row">
+              <p class="stat_title">일치 갯수</p>
+              <p class="stat_title">당첨금</p>
+              <p class="stat_title">당첨 갯수</p>
+            </div>
+            <div class="row">
+              <p class="stat_content">3개</p>
+              <p class="stat_content">5,000</p>
+              <p class="stat_content" id="match_3"></p>
+            </div>
+            <div class="row">
+              <p class="stat_content">4개</p>
+              <p class="stat_content">50,000</p>
+              <p class="stat_content" id="match_4"></p>
+            </div>
+            <div class="row">
+              <p class="stat_content">5개</p>
+              <p class="stat_content">1,500,000</p>
+              <p class="stat_content" id="match_5"></p>
+            </div>
+            <div class="row">
+              <p class="stat_content">5개+보너스볼</p>
+              <p class="stat_content">30,000,000</p>
+              <p class="stat_content" id="match_5+1"></p>
+            </div>
+            <div class="row">
+              <p class="stat_content">6개</p>
+              <p class="stat_content">2,000,000,000</p>
+              <p class="stat_content" id="match_6"></p>
+            </div>
+          </div>
+          <p class="profit">
+            
+          </p>
+          <button class="restart">
+            다시 시작하기
+          </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer class="footer_container">
+    <p class="footer_text">Copyright 2023. woowacourse</p>
+  </footer>
+</html>
